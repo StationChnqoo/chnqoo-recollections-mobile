@@ -2,8 +2,27 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
-import App from './App';
+import {createContext, useEffect} from 'react';
+import {AppRegistry, StatusBar, View} from 'react-native';
+import Stacks from './ScreenStacks';
 import {name as appName} from './app.json';
+import {useStore} from './useStore';
 
-AppRegistry.registerComponent(appName, () => App);
+const StoreContext = createContext();
+
+const Application = () => {
+  useEffect(() => {
+    return function () {};
+  }, []);
+
+  return (
+    <StoreContext.Provider value={useStore}>
+      <View style={{flex: 1}}>
+        <StatusBar translucent={false} />
+        <Stacks />
+      </View>
+    </StoreContext.Provider>
+  );
+};
+
+AppRegistry.registerComponent(appName, () => Application);
