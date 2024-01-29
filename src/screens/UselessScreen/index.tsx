@@ -1,3 +1,4 @@
+/** 空白页面，没什么卵用 ... */
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
@@ -9,28 +10,13 @@ interface MyProps {
   route?: RouteProp<RootStacksParams, 'DemoScreen'>;
 }
 
-const DemoScreen: React.FC<MyProps> = props => {
+const UselessScreen: React.FC<MyProps> = props => {
   useEffect(() => {
     return function () {};
   }, []);
   return <View style={{flex: 1}}></View>;
 };
 
-const styles = StyleSheet.create({
-  viewCard: {
-    padding: 12,
-    backgroundColor: 'white',
-    borderRadius: 12,
-  },
-  textTitle: {
-    fontSize: 16,
-    color: '#333',
-  },
-  viewGroupTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-  },
-});
+const styles = StyleSheet.create({});
 
-export default DemoScreen;
+export default UselessScreen;

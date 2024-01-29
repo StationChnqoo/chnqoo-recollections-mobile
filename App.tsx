@@ -1,10 +1,16 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import React, {useEffect} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useStore} from './useStore';
 import {RootStacksProp} from './ScreenStacks';
 import DemoScreen from '@src/screens/DemoScreen';
+import {rpx} from '@src/constants/x';
+import HomeScreen from '@src/screens/HomeScreen';
+import SearchScreen from '@src/screens/SearchScreen';
+import CommunityScreen from '@src/screens/CommunityScreen';
+import MyScreen from '@src/screens/MyScreen';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 interface AppProps {
@@ -13,6 +19,7 @@ interface AppProps {
 
 const App: React.FC<AppProps> = props => {
   const {theme} = useStore();
+  const [modalButtonStatus, setModalButtonStatus] = useState(0);
 
   useEffect(() => {
     return function () {};
@@ -23,6 +30,9 @@ const App: React.FC<AppProps> = props => {
       style={{
         flex: 1,
       }}>
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: 'white'}}
+      />
       <Tab.Navigator
         screenOptions={({route}) => ({
           headerShadowVisible: true,
@@ -31,7 +41,7 @@ const App: React.FC<AppProps> = props => {
             let icon = {
               Home: require('@src/assets/menu/movie.png'),
               Search: require('@src/assets/menu/notebook.png'),
-              Timeline: require('@src/assets/menu/calendar.png'),
+              Community: require('@src/assets/menu/direction.png'),
               My: require('@src/assets/menu/my.png'),
             }[route.name];
 
@@ -47,22 +57,46 @@ const App: React.FC<AppProps> = props => {
         })}>
         <Tab.Screen
           name={'Home'}
-          component={DemoScreen}
+          component={HomeScreen}
           options={{tabBarLabel: '首页'}}
         />
         <Tab.Screen
           name={'Search'}
-          component={DemoScreen}
+          component={SearchScreen}
           options={{tabBarLabel: '搜索'}}
         />
         <Tab.Screen
-          name={'Timeline'}
+          name={'Modal'}
           component={DemoScreen}
-          options={{tabBarLabel: '时光'}}
+          options={{
+            tabBarButton: tabProps => (
+              <TouchableOpacity
+                activeOpacity={0.88}
+                onPress={() => {
+                  setModalButtonStatus(t => -t + 1);
+                }}
+                style={[styles.viewModalButton, {backgroundColor: theme}]}>
+                <Image
+                  source={
+                    [
+                      require('@src/assets/menu/modal_open.png'),
+                      require('@src/assets/menu/modal_close.png'),
+                    ][modalButtonStatus]
+                  }
+                  style={{tintColor: 'white', height: rpx(24), width: rpx(24)}}
+                />
+              </TouchableOpacity>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name={'Community'}
+          component={CommunityScreen}
+          options={{tabBarLabel: '社区'}}
         />
         <Tab.Screen
           name={'My'}
-          component={DemoScreen}
+          component={MyScreen}
           options={{tabBarLabel: '我的'}}
         />
       </Tab.Navigator>
@@ -71,12 +105,23 @@ const App: React.FC<AppProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  viewTabBarStyle: {
-    alignSelf: 'center',
-    alignItems: 'center',
+  viewModalButton: {
+    height: rpx(48),
+    width: rpx(48),
+    borderRadius: rpx(24),
     justifyContent: 'center',
-    paddingHorizontal: 12,
-    borderRadius: 12,
+    alignItems: 'center',
+    top: -12,
+    alignContent: 'center',
+    alignSelf: 'center',
+    shadowColor: '#333', 
+    shadowOffset: { 
+        width: 1, 
+        height: 12, 
+    }, 
+    shadowOpacity: 0.28, 
+    shadowRadius: rpx(24), 
+    elevation: 4, 
   },
 });
 
