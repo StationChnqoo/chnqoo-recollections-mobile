@@ -11,6 +11,7 @@ import SearchScreen from '@src/screens/SearchScreen';
 import CommunityScreen from '@src/screens/CommunityScreen';
 import MyScreen from '@src/screens/MyScreen';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {AppBottomBarModal} from '@src/components';
 
 const Tab = createBottomTabNavigator();
 interface AppProps {
@@ -100,6 +101,14 @@ const App: React.FC<AppProps> = props => {
           options={{tabBarLabel: '我的'}}
         />
       </Tab.Navigator>
+      <AppBottomBarModal
+        isVisible={modalButtonStatus == 1}
+        onClose={() => {
+          setModalButtonStatus(0);
+        }}
+        onHide={() => {}}
+        onShow={() => {}}
+      />
     </View>
   );
 };
@@ -114,14 +123,14 @@ const styles = StyleSheet.create({
     top: -12,
     alignContent: 'center',
     alignSelf: 'center',
-    shadowColor: '#333', 
-    shadowOffset: { 
-        width: 1, 
-        height: 12, 
-    }, 
-    shadowOpacity: 0.28, 
-    shadowRadius: rpx(24), 
-    elevation: 4, 
+    shadowColor: '#333',
+    shadowOffset: {
+      width: 1,
+      height: 12,
+    },
+    shadowOpacity: 0.28,
+    shadowRadius: rpx(24),
+    elevation: 4,
   },
 });
 
