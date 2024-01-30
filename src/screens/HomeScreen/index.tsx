@@ -2,7 +2,7 @@ import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -13,9 +13,16 @@ const HomeScreen: React.FC<MyProps> = props => {
   useEffect(() => {
     return function () {};
   }, []);
+
+  const {navigation} = props;
   return (
     <View style={{flex: 1}}>
-      <Text>首页</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('NoteEditorScreen');
+        }}>
+        <Text>编辑</Text>
+      </TouchableOpacity>
     </View>
   );
 };
