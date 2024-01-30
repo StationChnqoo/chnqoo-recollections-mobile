@@ -20,3 +20,17 @@ export const CardInputerKeyevent = {
   RESET: 'RESET',
   POP: 'POP',
 };
+
+export const NotesType = {
+  TIMER: 'TIMER',
+  DAILY: 'DAILY',
+  MOTION: 'MOTION',
+  LEARN: 'COLLECT',
+};
+
+export interface AppBottomBarModalItem {
+  id: string;
+  title: string;
+  message: string;
+  checked: boolean;
+}

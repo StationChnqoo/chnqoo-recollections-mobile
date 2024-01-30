@@ -1,5 +1,6 @@
+import {rpx} from '@src/constants/x';
 import React, {ReactNode, useEffect} from 'react';
-import {Dimensions, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 import Modal from 'react-native-modal';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -36,14 +37,14 @@ const BottomSheet: React.FC<MyProps> = props => {
       onModalHide={() => {
         onHide?.();
       }}
-      style={{margin: 0, justifyContent: 'flex-end'}}
-      >
+      style={{margin: 0, justifyContent: 'flex-end'}}>
       <View
         style={[
           styles.views,
           {paddingBottom: useSafeAreaInsets().bottom},
           style,
         ]}>
+        <View style={styles.viewDot} />
         {children}
       </View>
     </Modal>
@@ -53,9 +54,17 @@ const BottomSheet: React.FC<MyProps> = props => {
 const styles = StyleSheet.create({
   views: {
     backgroundColor: 'white',
-    paddingHorizontal: 12,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
+    paddingHorizontal: 16,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+  viewDot: {
+    width: rpx(64),
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    alignSelf: 'center',
+    marginVertical: 12,
   },
 });
 

@@ -1,7 +1,3 @@
-/**
- * @format
- */
-
 import {createContext, useEffect} from 'react';
 import {AppRegistry, StatusBar, View} from 'react-native';
 import Stacks from './ScreenStacks';

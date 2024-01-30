@@ -108,6 +108,10 @@ const App: React.FC<AppProps> = props => {
         }}
         onHide={() => {}}
         onShow={() => {}}
+        onSubmit={item => {
+          console.log(item.id);
+          setModalButtonStatus(0);
+        }}
       />
     </View>
   );
