@@ -78,7 +78,7 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
   };
 
   return (
-    <BottomSheet {...props}>
+    <BottomSheet {...props} hideModalContentWhileAnimating={true}>
       <Text style={{fontSize: rpx(20), color: '#333', fontWeight: '500'}}>
         此时此刻想记录点什么？
       </Text>
@@ -92,7 +92,7 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
         {items.map(it => buildItem(it))}
       </View>
       <View style={{height: 16}} />
-      <Button title="开始记录" onPress={onSubmit} />
+      <Button title="开始记录" onPress={() => {}} />
     </BottomSheet>
   );
 };

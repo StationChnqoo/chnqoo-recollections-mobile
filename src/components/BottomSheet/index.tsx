@@ -11,6 +11,7 @@ interface MyProps {
   onClose: () => void;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
+  hideModalContentWhileAnimating?: boolean
 }
 
 const BottomSheet: React.FC<MyProps> = props => {
@@ -18,7 +19,7 @@ const BottomSheet: React.FC<MyProps> = props => {
     return function () {};
   }, []);
 
-  const {isVisible, onHide, onShow, onClose, children, style} = props;
+  const {isVisible, onHide, onShow, onClose, children, style, hideModalContentWhileAnimating} = props;
   return (
     <Modal
       isVisible={isVisible}
@@ -37,6 +38,7 @@ const BottomSheet: React.FC<MyProps> = props => {
       onModalHide={() => {
         onHide?.();
       }}
+      hideModalContentWhileAnimating={hideModalContentWhileAnimating}
       style={{margin: 0, justifyContent: 'flex-end'}}>
       <View
         style={[

@@ -1,21 +1,19 @@
-import React, {ReactNode} from 'react';
+import {useStore} from '@root/useStore';
+import {rpx} from '@src/constants/x';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
   ViewStyle,
 } from 'react-native';
-import BottomSheet from '../BottomSheet';
-import {rpx} from '@src/constants/x';
-import {useStore} from '@root/useStore';
 
 interface MyProps {
   onPress: () => void;
   title: string;
   style?: StyleProp<ViewStyle>;
-  disable?: boolean
+  disable?: boolean;
 }
 
 const Button: React.FC<MyProps> = props => {

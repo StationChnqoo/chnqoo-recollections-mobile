@@ -31,7 +31,7 @@ const LocationItem: React.FC<MyProps> = props => {
         <Text style={{color: '#666', fontSize: 14}}>广东省深圳市</Text>
         <Image
           source={require('@src/assets/common/row_more.png')}
-          style={{height: rpx(18), width: rpx(18), tintColor: '#666'}}
+          style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
         />
       </TouchableOpacity>
     </View>

@@ -1,9 +1,8 @@
-import {useStore} from '@root/useStore';
-import {rpx} from '@src/constants/x';
-import moment from 'moment';
+import { useStore } from '@root/useStore';
+import { rpx } from '@src/constants/x';
 
-import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, { useEffect } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface MyProps {}
 
@@ -31,7 +30,7 @@ const VoiceItem: React.FC<MyProps> = props => {
         <Text style={{color: '#666', fontSize: 14}}>选填</Text>
         <Image
           source={require('@src/assets/common/row_more.png')}
-          style={{height: rpx(18), width: rpx(18), tintColor: '#666'}}
+          style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
         />
       </TouchableOpacity>
     </View>

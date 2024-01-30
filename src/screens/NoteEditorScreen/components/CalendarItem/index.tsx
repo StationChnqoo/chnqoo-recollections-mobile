@@ -30,7 +30,7 @@ const CalendarItem: React.FC<MyProps> = props => {
         onPress={() => {
           setDate(value);
         }}>
-        <Text style={{color: value == date ? theme : '#999', fontSize: 12}}>
+        <Text style={{color: value == date ? theme : '#999', fontSize: 14}}>
           {name}
         </Text>
       </TouchableOpacity>
@@ -58,7 +58,7 @@ const CalendarItem: React.FC<MyProps> = props => {
           <Text style={{color: '#666', fontSize: 14}}>{date}</Text>
           <Image
             source={require('@src/assets/common/row_more.png')}
-            style={{height: rpx(18), width: rpx(18), tintColor: '#666'}}
+            style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
           />
         </TouchableOpacity>
       </View>
