@@ -1,5 +1,5 @@
 import AppBottomBarModal from './AppBottomBarModal';
 import BottomSheet from './BottomSheet';
 import Button from './Button';
-
-export {AppBottomBarModal, BottomSheet, Button};
+import TitleBar  from './TitleBar';
+export {AppBottomBarModal, BottomSheet, Button, TitleBar};
