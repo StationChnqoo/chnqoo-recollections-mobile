@@ -1,25 +1,22 @@
-import {rpx} from '@src/constants/x';
-import React, {ReactNode, useEffect} from 'react';
-import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
 import Modal from 'react-native-modal';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-interface MyProps {
-  isVisible: boolean;
-  onHide: () => void;
-  onShow: () => void;
-  onClose: () => void;
-  children: ReactNode;
-  style?: StyleProp<ViewStyle>;
-  hideModalContentWhileAnimating?: boolean
-}
-
-const BottomSheet: React.FC<MyProps> = props => {
+const BottomSheet = props => {
   useEffect(() => {
     return function () {};
   }, []);
 
-  const {isVisible, onHide, onShow, onClose, children, style, hideModalContentWhileAnimating} = props;
+  const {
+    isVisible,
+    onHide,
+    onShow,
+    onClose,
+    children,
+    style,
+    onBackdropPress,
+    hideModalContentWhileAnimating,
+  } = props;
   return (
     <Modal
       isVisible={isVisible}
@@ -32,6 +29,7 @@ const BottomSheet: React.FC<MyProps> = props => {
       onBackdropPress={() => {
         onClose?.();
       }}
+      hasBackdrop={false}
       animationInTiming={361}
       animationOutTiming={618}
       animationIn={'slideInUp'}
@@ -62,7 +60,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
   },
   viewDot: {
-    width: rpx(64),
+    width: 64,
     height: 8,
     borderRadius: 4,
     backgroundColor: 'rgba(0, 0, 0, 0.12)',

@@ -18,7 +18,7 @@ interface MyProps {
   route?: RouteProp<RootStacksParams, 'DemoScreen'>;
 }
 
-const ITEMS_INTERVAL_SPACE =2;
+const ITEMS_INTERVAL_SPACE = 2;
 const NoteEditorScreen: React.FC<MyProps> = props => {
   useEffect(() => {
     return function () {};
@@ -58,7 +58,7 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
           <View style={{height: ITEMS_INTERVAL_SPACE}} />
           <VoiceItem />
           <View style={{height: ITEMS_INTERVAL_SPACE}} />
-          <PhotoItem />
+          <PhotoItem onPhotosSelected={urls => {}} />
           <View style={{height: 16}} />
         </ScrollView>
       </View>

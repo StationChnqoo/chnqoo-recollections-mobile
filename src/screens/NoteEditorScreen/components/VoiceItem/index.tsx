@@ -1,8 +1,9 @@
-import { useStore } from '@root/useStore';
-import { rpx } from '@src/constants/x';
+import {useStore} from '@root/useStore';
+import {rpx} from '@src/constants/x';
 
-import React, { useEffect } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import VoiceModal from '../VoiceModal';
 
 interface MyProps {}
 
@@ -13,6 +14,7 @@ const VoiceItem: React.FC<MyProps> = props => {
 
   const {} = props;
   const {theme} = useStore();
+  const [voiceModal, setVoiceModal] = useState(false);
 
   return (
     <View style={styles.views}>
@@ -26,13 +28,25 @@ const VoiceItem: React.FC<MyProps> = props => {
       </View>
       <TouchableOpacity
         style={{flexDirection: 'row', alignItems: 'center'}}
-        activeOpacity={0.88}>
-        <Text style={{color: '#666', fontSize: 14}}>选填</Text>
+        activeOpacity={0.88}
+        onPress={() => {
+          setVoiceModal(true);
+        }}>
+        <Text style={{color: '#666', fontSize: 14}}>点击录音（选填）</Text>
         <Image
           source={require('@src/assets/common/row_more.png')}
           style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
         />
       </TouchableOpacity>
+      <VoiceModal
+        onShow={() => {}}
+        onHide={() => {}}
+        onClose={() => {
+          setVoiceModal(false);
+        }}
+        isVisible={voiceModal}
+        onSubmit={() => {}}
+      />
     </View>
   );
 };
