@@ -11,7 +11,8 @@ interface MyProps {
   onClose: () => void;
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
-  hideModalContentWhileAnimating?: boolean
+  disableBackdropPress?: boolean;
+  hideModalContentWhileAnimating?: boolean;
 }
 
 const BottomSheet: React.FC<MyProps> = props => {
@@ -19,7 +20,16 @@ const BottomSheet: React.FC<MyProps> = props => {
     return function () {};
   }, []);
 
-  const {isVisible, onHide, onShow, onClose, children, style, hideModalContentWhileAnimating} = props;
+  const {
+    isVisible,
+    onHide,
+    onShow,
+    onClose,
+    children,
+    style,
+    hideModalContentWhileAnimating,
+    disableBackdropPress,
+  } = props;
   return (
     <Modal
       isVisible={isVisible}
@@ -30,7 +40,7 @@ const BottomSheet: React.FC<MyProps> = props => {
       useNativeDriverForBackdrop={true}
       statusBarTranslucent={true}
       onBackdropPress={() => {
-        onClose?.();
+        !disableBackdropPress && onClose?.();
       }}
       animationInTiming={361}
       animationOutTiming={618}
@@ -38,7 +48,6 @@ const BottomSheet: React.FC<MyProps> = props => {
       onModalHide={() => {
         onHide?.();
       }}
-      
       hideModalContentWhileAnimating={hideModalContentWhileAnimating}
       style={{margin: 0, justifyContent: 'flex-end'}}>
       <View

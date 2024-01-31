@@ -117,7 +117,8 @@ const PhotoItem: React.FC<MyProps> = props => {
 
 const styles = StyleSheet.create({
   views: {
-    padding: 12,
+    paddingHorizontal: 12,
+    height: rpx(48),
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
