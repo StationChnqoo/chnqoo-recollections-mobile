@@ -49,6 +49,7 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
               style={styles.inputerMessage}
               placeholder={'内容（必填）'}
               multiline={true}
+              textAlignVertical={'top'}
             />
           </View>
           <View style={{height: ITEMS_INTERVAL_SPACE}} />

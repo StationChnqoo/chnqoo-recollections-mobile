@@ -28,7 +28,7 @@ const TitleBar: React.FC<MyProps> = props => {
             source={require('@src/assets/common/row_back.png')}
           />
         </TouchableOpacity>
-        <Text style={{fontSize: 16, color: '#333', fontWeight: '500'}}>
+        <Text style={{fontSize: 18, color: '#333', fontWeight: '500'}}>
           {title}
         </Text>
         {moreView ? moreView : <View style={styles.imageBack} />}
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   imageBack: {
-    height: rpx(18),
-    width: rpx(18),
+    height: 20,
+    width: 20,
   },
 });
 
