@@ -2,7 +2,7 @@ import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -15,7 +15,13 @@ const SearchScreen: React.FC<MyProps> = props => {
   }, []);
   return (
     <View style={{flex: 1}}>
-      <Text>搜索</Text>
+      <TouchableOpacity
+        activeOpacity={0.88}
+        onPress={() => {
+          props.navigation.navigate('DemoScreen');
+        }}>
+        <Text>搜索</Text>
+      </TouchableOpacity>
     </View>
   );
 };
