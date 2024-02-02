@@ -27,7 +27,8 @@ const LocationItem: React.FC<MyProps> = props => {
       </View>
       <TouchableOpacity
         style={{flexDirection: 'row', alignItems: 'center'}}
-        activeOpacity={0.88}>
+        activeOpacity={0.88}
+        hitSlop={{top: 12, bottom: 12}}>
         <Text style={{color: '#666', fontSize: 14}}>广东省深圳市</Text>
         <Image
           source={require('@src/assets/common/row_more.png')}

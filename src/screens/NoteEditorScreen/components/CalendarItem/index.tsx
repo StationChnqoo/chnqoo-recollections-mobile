@@ -27,6 +27,7 @@ const CalendarItem: React.FC<MyProps> = props => {
       <TouchableOpacity
         style={[styles.viewTag, {borderColor: value == date ? theme : '#999'}]}
         activeOpacity={0.88}
+        hitSlop={{top: 12, bottom: 12}}
         onPress={() => {
           setDate(value);
         }}>
@@ -54,7 +55,8 @@ const CalendarItem: React.FC<MyProps> = props => {
         <View style={{width: 10}} />
         <TouchableOpacity
           style={{flexDirection: 'row', alignItems: 'center'}}
-          activeOpacity={0.88}>
+          activeOpacity={0.88}
+          hitSlop={{top: 12, bottom: 12}}>
           <Text style={{color: '#666', fontSize: 14}}>{date}</Text>
           <Image
             source={require('@src/assets/common/row_more.png')}

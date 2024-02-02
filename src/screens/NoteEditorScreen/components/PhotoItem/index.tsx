@@ -58,6 +58,7 @@ const PhotoItem: React.FC<MyProps> = props => {
         <TouchableOpacity
           style={{flexDirection: 'row', alignItems: 'center'}}
           activeOpacity={0.88}
+          hitSlop={{top: 12, bottom: 12}}
           onPress={onMorePhotosPress}>
           <Text style={{color: '#666', fontSize: 14}}>{`点击上传（${
             images.length == 0 ? '选填' : `已上传${images.length}/4张`

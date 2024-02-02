@@ -86,6 +86,7 @@ const VoiceItem: React.FC<MyProps> = props => {
             <View style={{width: 12}} />
             <TouchableOpacity
               activeOpacity={0.88}
+              hitSlop={{top: 12, left: 12, bottom: 12, right: 12}}
               onPress={async () => {
                 await onStopPlay();
                 setAudio('');
@@ -100,6 +101,7 @@ const VoiceItem: React.FC<MyProps> = props => {
       ) : (
         <TouchableOpacity
           style={{flexDirection: 'row', alignItems: 'center'}}
+          hitSlop={{top: 12, bottom: 12}}
           activeOpacity={0.88}
           onPress={() => {
             setVoiceModal(true);
