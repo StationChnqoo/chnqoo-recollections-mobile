@@ -1,6 +1,6 @@
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
-import {TitleBar} from '@src/components';
+import {Button, TitleBar} from '@src/components';
 
 import React, {useEffect} from 'react';
 import {
@@ -60,8 +60,16 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
           <VoiceItem />
           <View style={{height: ITEMS_INTERVAL_SPACE}} />
           <PhotoItem onPhotosSelected={urls => {}} />
-          <View style={{height: 16}} />
+          <View style={{height: 24}} />
         </ScrollView>
+      </View>
+      <View style={{padding: 12, backgroundColor: 'white'}}>
+        <Button
+          title={'确认发布'}
+          // style={{marginHorizontal: 12}}
+          onPress={() => {}}
+          disable={true}
+        />
       </View>
       <View
         style={{height: useSafeAreaInsets().bottom, backgroundColor: 'white'}}

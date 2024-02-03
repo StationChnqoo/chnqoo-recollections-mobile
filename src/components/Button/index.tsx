@@ -17,14 +17,14 @@ interface MyProps {
 }
 
 const Button: React.FC<MyProps> = props => {
-  const {title, onPress, disable} = props;
+  const {title, onPress, disable, style} = props;
   const {theme} = useStore();
   return (
     <TouchableOpacity
       onPress={onPress}
       disabled={disable}
       activeOpacity={0.88}
-      style={[styles.view, {backgroundColor: theme}]}>
+      style={[styles.view, style, {backgroundColor: theme}]}>
       <Text style={{fontSize: 16, color: 'white'}}>{title}</Text>
     </TouchableOpacity>
   );
