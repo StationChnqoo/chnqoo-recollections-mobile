@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import DatePicker from 'react-native-date-picker';
 
 interface MyProps {}
 
@@ -15,6 +16,7 @@ const CalendarItem: React.FC<MyProps> = props => {
   const {} = props;
   const {theme} = useStore();
   const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
+  const [isShowDatePicker, setIsShowDatePicker] = useState(false);
 
   /**
    * 快捷日期填充
@@ -56,7 +58,10 @@ const CalendarItem: React.FC<MyProps> = props => {
         <TouchableOpacity
           style={{flexDirection: 'row', alignItems: 'center'}}
           activeOpacity={0.88}
-          hitSlop={{top: 12, bottom: 12}}>
+          hitSlop={{top: 12, bottom: 12}}
+          onPress={() => {
+            setIsShowDatePicker(true);
+          }}>
           <Text style={{color: '#666', fontSize: 14}}>{date}</Text>
           <Image
             source={require('@src/assets/common/row_more.png')}
@@ -64,6 +69,24 @@ const CalendarItem: React.FC<MyProps> = props => {
           />
         </TouchableOpacity>
       </View>
+      <DatePicker
+        modal={true}
+        mode={'date'}
+        open={isShowDatePicker}
+        date={new Date(date)}
+        onConfirm={date => {
+          setIsShowDatePicker(false);
+          setDate(moment(date).format('YYYY-MM-DD'));
+        }}
+        onCancel={() => {
+          setIsShowDatePicker(false);
+        }}
+        confirmText={'确认'}
+        cancelText={'取消'}
+        title={'请选择日期'}
+        androidVariant={'iosClone'}
+        locale={'zh-CN'}
+      />
     </View>
   );
 };
