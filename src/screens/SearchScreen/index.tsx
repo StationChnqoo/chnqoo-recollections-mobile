@@ -1,8 +1,10 @@
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import SegmentedControl from '@react-native-segmented-control/segmented-control';
+import {DailyPanel, LearnPanel, MotionPanel, TimerPanel} from './components';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -10,18 +12,38 @@ interface MyProps {
 }
 
 const SearchScreen: React.FC<MyProps> = props => {
+  const [index, setIndex] = useState(0);
+
   useEffect(() => {
     return function () {};
   }, []);
   return (
-    <View style={{flex: 1}}>
-      <TouchableOpacity
-        activeOpacity={0.88}
-        onPress={() => {
-          props.navigation.navigate('DemoScreen');
-        }}>
-        <Text>搜索</Text>
-      </TouchableOpacity>
+    <View style={{flex: 1, backgroundColor: '#F3F9F1'}}>
+      <View style={{flex: 1}}>
+        <View
+          style={{
+            paddingHorizontal: 32,
+            paddingVertical: 8,
+            backgroundColor: 'white',
+          }}>
+          <SegmentedControl
+            values={['全部', '日记', '纪念日', '心情', '笔记']}
+            selectedIndex={index}
+            onChange={event => {
+              setIndex(event.nativeEvent.selectedSegmentIndex);
+            }}
+          />
+        </View>
+        {
+          [
+            null,
+            <DailyPanel />,
+            <TimerPanel />,
+            <MotionPanel />,
+            <LearnPanel />,
+          ][index]
+        }
+      </View>
     </View>
   );
 };

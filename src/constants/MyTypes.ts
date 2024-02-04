@@ -31,6 +31,6 @@ export const NotesType = {
 export interface AppBottomBarModalItem {
   id: string;
   title: string;
-  message: string;
+  src: ImageRequireSource;
   checked: boolean;
 }

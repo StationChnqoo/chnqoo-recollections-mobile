@@ -1,6 +1,7 @@
 import React, {ReactNode, useState} from 'react';
 import {
   Dimensions,
+  Image,
   StyleProp,
   StyleSheet,
   Text,
@@ -26,27 +27,27 @@ interface MyProps {
 const AppBottomBarModal: React.FC<MyProps> = props => {
   const [items, setItems] = useState<AppBottomBarModalItem[]>([
     {
-      id: NotesType.TIMER,
-      title: '纪念日',
-      message: '记录重要的日子 ~',
-      checked: true,
-    },
-    {
       id: NotesType.DAILY,
-      title: '写日记',
-      message: '愿有深情可回首 ~',
+      title: '日记',
+      src: require('@src/assets/main/module_daily.png'),
       checked: false,
     },
     {
       id: NotesType.MOTION,
-      title: '晒心情',
-      message: '此时此刻的感慨 ~',
+      title: '碎碎念',
+      src: require('@src/assets/main/module_motion.png'),
       checked: false,
     },
     {
+      id: NotesType.TIMER,
+      title: '纪念日',
+      src: require('@src/assets/main/module_timer.png'),
+      checked: true,
+    },
+    {
       id: NotesType.LEARN,
-      title: '学到了',
-      message: '我的碎片知识库 ~',
+      title: '笔记',
+      src: require('@src/assets/main/module_learn.png'),
       checked: false,
     },
   ]);
@@ -67,7 +68,16 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
         activeOpacity={0.88}
         style={[styles.viewItem, {borderColor: item.checked ? theme : '#eee'}]}>
         <View>
-          <View>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              source={item.src}
+              style={{
+                height: rpx(32),
+                width: rpx(32),
+                tintColor: item.checked ? theme : '#999',
+              }}
+            />
+            <View style={{height: 6}} />
             <Text style={{fontSize: 16, color: item.checked ? theme : '#666'}}>
               {item.title}
             </Text>
@@ -110,9 +120,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: (Dimensions.get('screen').width - 64) / 4,
-    height: rpx(48),
     borderWidth: 1,
     borderRadius: 16,
+    paddingVertical: 12,
   },
 });
 

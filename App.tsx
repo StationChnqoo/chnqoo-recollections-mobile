@@ -64,7 +64,7 @@ const App: React.FC<AppProps> = props => {
         <Tab.Screen
           name={'Search'}
           component={SearchScreen}
-          options={{tabBarLabel: '搜索'}}
+          options={{tabBarLabel: '归档'}}
         />
         <Tab.Screen
           name={'Modal'}
