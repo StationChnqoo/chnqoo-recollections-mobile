@@ -1,9 +1,9 @@
 import {useStore} from '@root/useStore';
 
-import React, {useEffect} from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
-import moment, {months} from 'moment';
 import {rpx} from '@src/constants/x';
+import moment from 'moment';
+import React, {useEffect} from 'react';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 interface MyProps {
@@ -19,7 +19,7 @@ const DailyItem: React.FC<MyProps> = props => {
   const {theme} = useStore();
 
   const loadImages = (images: string[]) => {
-    let size = (Dimensions.get('screen').width - 24 - rpx(48) - 24) / 3 - 6;
+    let size = (Dimensions.get('screen').width - 24 - rpx(52) - 24) / 3 - 6;
     const imageViews = () => {
       let array = [...images, ...Array(3 - images.length).fill(null)];
 
@@ -73,7 +73,7 @@ const DailyItem: React.FC<MyProps> = props => {
         style={{
           color: '#333',
           fontSize: 18,
-          width: rpx(48),
+          width: rpx(52),
           paddingVertical: 5,
         }}>
         <Text>{moment(item.time).daysInMonth()}/</Text>

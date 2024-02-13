@@ -1,7 +1,7 @@
 import {useStore} from '@root/useStore';
 import {rpx} from '@src/constants/x';
 import React, {ReactNode, useEffect} from 'react';
-import {Platform, StatusBar, StyleSheet, View} from 'react-native';
+import {Platform, StatusBar, StyleSheet, Switch, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import tinycolor from 'tinycolor2';
@@ -23,14 +23,14 @@ const BeautyTitleBar: React.FC<MyProps> = props => {
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}
       colors={[
-        tinycolor(theme).setAlpha(0.618).toRgbString(),
-        tinycolor(theme).setAlpha(0.28).toRgbString(),
+        tinycolor(theme).setAlpha(0.88).toRgbString(),
+        tinycolor(theme).setAlpha(0.58).toRgbString(),
       ]}>
       <View
         style={{
           height: Platform.select({
             ios: Math.max(useSafeAreaInsets().top, 24),
-            android: StatusBar.currentHeight,
+            android: 0,
           }),
         }}
       />

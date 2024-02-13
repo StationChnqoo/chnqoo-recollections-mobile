@@ -14,6 +14,7 @@ import {rpx} from '@src/constants/x';
 import Button from '../Button';
 import {useStore} from '@root/useStore';
 import {AppBottomBarModalItem, NotesType} from '@src/constants/MyTypes';
+import Services from '@src/constants/Services';
 
 interface MyProps {
   isVisible: boolean;
@@ -104,10 +105,13 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
       <View style={{height: 16}} />
       <Button
         title="开始记录"
-        onPress={() => {
+        onPress={async () => {
+          let result = await new Services().selectLogin();
+          console.log('selectLogin: ', result);
           onSubmit(items.find(it => it.checked));
         }}
       />
+      <View style={{height: 10}} />
     </BottomSheet>
   );
 };
