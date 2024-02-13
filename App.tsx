@@ -1,17 +1,16 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import {AppBottomBarModal} from '@src/components';
+import {rpx} from '@src/constants/x';
+import CommunityScreen from '@src/screens/CommunityScreen';
+import DemoScreen from '@src/screens/DemoScreen';
+import HomeScreen from '@src/screens/HomeScreen';
+import MyScreen from '@src/screens/MyScreen';
+import SearchScreen from '@src/screens/SearchScreen';
 import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {useStore} from './useStore';
 import {RootStacksProp} from './ScreenStacks';
-import DemoScreen from '@src/screens/DemoScreen';
-import {rpx} from '@src/constants/x';
-import HomeScreen from '@src/screens/HomeScreen';
-import SearchScreen from '@src/screens/SearchScreen';
-import CommunityScreen from '@src/screens/CommunityScreen';
-import MyScreen from '@src/screens/MyScreen';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {AppBottomBarModal} from '@src/components';
+import {useStore} from './useStore';
 
 const Tab = createBottomTabNavigator();
 interface AppProps {
@@ -19,6 +18,7 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = props => {
+  const {navigation} = props;
   const {theme} = useStore();
   const [modalButtonStatus, setModalButtonStatus] = useState(0);
 
@@ -31,9 +31,6 @@ const App: React.FC<AppProps> = props => {
       style={{
         flex: 1,
       }}>
-      <View
-        style={{height: useSafeAreaInsets().top, backgroundColor: 'white'}}
-      />
       <Tab.Navigator
         screenOptions={({route}) => ({
           headerShadowVisible: true,
@@ -111,6 +108,8 @@ const App: React.FC<AppProps> = props => {
         onSubmit={item => {
           console.log(item.id);
           setModalButtonStatus(0);
+          
+          navigation.navigate('NoteEditorScreen');
         }}
       />
     </View>

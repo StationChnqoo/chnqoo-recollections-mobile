@@ -49,4 +49,8 @@ const useWechatEmoji = [
   '眼前一亮.png',
   '让我看看.png',
 ];
-export {rpx, useWechatEmoji};
+
+const Colors = {
+  page: '#f5f5f5',
+};
+export {rpx, useWechatEmoji, Colors};

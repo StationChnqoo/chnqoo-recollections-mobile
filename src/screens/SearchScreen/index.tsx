@@ -2,9 +2,16 @@ import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import {DailyPanel, LearnPanel, MotionPanel, TimerPanel} from './components';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -18,7 +25,11 @@ const SearchScreen: React.FC<MyProps> = props => {
     return function () {};
   }, []);
   return (
-    <View style={{flex: 1, backgroundColor: '#F3F9F1'}}>
+    <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
+      <StatusBar translucent={false} />
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: 'white'}}
+      />
       <View style={{flex: 1}}>
         <View
           style={{

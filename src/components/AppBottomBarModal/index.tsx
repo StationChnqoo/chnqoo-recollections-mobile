@@ -102,7 +102,12 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
         {items.map(it => buildItem(it))}
       </View>
       <View style={{height: 16}} />
-      <Button title="开始记录" onPress={() => {}} />
+      <Button
+        title="开始记录"
+        onPress={() => {
+          onSubmit(items.find(it => it.checked));
+        }}
+      />
     </BottomSheet>
   );
 };

@@ -1,8 +1,10 @@
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
+import {BeautyTitleBar} from '@src/components';
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {SearchBar} from './components';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -17,12 +19,10 @@ const HomeScreen: React.FC<MyProps> = props => {
   const {navigation} = props;
   return (
     <View style={{flex: 1}}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('NoteEditorScreen');
-        }}>
-        <Text>编辑</Text>
-      </TouchableOpacity>
+      <BeautyTitleBar>
+        <SearchBar />
+      </BeautyTitleBar>
+      <ScrollView></ScrollView>
     </View>
   );
 };

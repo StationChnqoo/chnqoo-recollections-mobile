@@ -1,8 +1,11 @@
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
+import {BeautyTitleBar} from '@src/components';
+import { Colors } from '@src/constants/x';
 
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -14,8 +17,11 @@ const CommunityScreen: React.FC<MyProps> = props => {
     return function () {};
   }, []);
   return (
-    <View style={{flex: 1}}>
-      <Text>社区</Text>
+    <View style={{flex: 1, backgroundColor: Colors.page}}>
+      <StatusBar translucent={false} />
+      <View
+        style={{height: useSafeAreaInsets().top, backgroundColor: 'white'}}
+      />
     </View>
   );
 };
