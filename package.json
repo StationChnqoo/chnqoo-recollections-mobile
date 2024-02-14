@@ -5,6 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "test:staging": "ENVFILE=.env.staging ./android/gradlew assembleDebug",
+    "test:alpha": "ENVFILE=.env.alpha ./android/gradlew assembleDebug",
+    "publish:production": "ENVFILE=.env.alpha ./android/gradlew assembleRelease",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
