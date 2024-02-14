@@ -1,17 +1,15 @@
-import {RouteProp} from '@react-navigation/native';
-import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
+import { RouteProp } from '@react-navigation/native';
+import { RootStacksParams, RootStacksProp } from '@root/ScreenStacks';
 
-import React, {useEffect, useState} from 'react';
+import SegmentedControl from '@react-native-segmented-control/segmented-control';
+import React, { useEffect, useState } from 'react';
 import {
   StatusBar,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import {DailyPanel, LearnPanel, MotionPanel, TimerPanel} from './components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { DailyPanel, LearnPanel, MotionPanel, TimerPanel } from './components';
 
 interface MyProps {
   navigation?: RootStacksProp;
