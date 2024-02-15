@@ -64,7 +64,7 @@ const CalendarItem: React.FC<MyProps> = props => {
           }}>
           <Text style={{color: '#666', fontSize: 14}}>{date}</Text>
           <Image
-            source={require('@src/assets/common/row_more.png')}
+            source={require('@src/assets/common/row_more_horizontal.png')}
             style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
           />
         </TouchableOpacity>

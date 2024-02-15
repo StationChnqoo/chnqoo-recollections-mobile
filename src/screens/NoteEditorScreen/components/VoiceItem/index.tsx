@@ -108,7 +108,7 @@ const VoiceItem: React.FC<MyProps> = props => {
           }}>
           <Text style={{color: '#666', fontSize: 14}}>点击录音（选填）</Text>
           <Image
-            source={require('@src/assets/common/row_more.png')}
+            source={require('@src/assets/common/row_more_horizontal.png')}
             style={{height: 18, width: 18, tintColor: '#999'}}
           />
         </TouchableOpacity>

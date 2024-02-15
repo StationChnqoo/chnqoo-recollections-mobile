@@ -64,7 +64,7 @@ const PhotoItem: React.FC<MyProps> = props => {
             images.length == 0 ? '选填' : `已上传${images.length}/4张`
           }）`}</Text>
           <Image
-            source={require('@src/assets/common/row_more.png')}
+            source={require('@src/assets/common/row_more_horizontal.png')}
             style={{height: rpx(18), width: rpx(18), tintColor: '#999'}}
           />
         </TouchableOpacity>

@@ -2,7 +2,7 @@ import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 import {Button, TitleBar} from '@src/components';
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
   ScrollView,
@@ -11,7 +11,13 @@ import {
   View,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {CalendarItem, LocationItem, PhotoItem, VoiceItem} from './components';
+import {
+  CalendarItem,
+  LocationItem,
+  PhotoItem,
+  VoiceItem,
+  WechatItem,
+} from './components';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -25,8 +31,11 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
   }, []);
 
   const {navigation} = props;
+  const [emoji, setEmoji] = useState('666666.png');
+
+  const line = () => <View style={{height: ITEMS_INTERVAL_SPACE}} />;
   return (
-    <View style={{flex: 1, backgroundColor: '#F3F9F1'}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <TitleBar
         onBackPress={() => {
           navigation.goBack();
@@ -52,28 +61,33 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
               textAlignVertical={'top'}
             />
           </View>
-          <View style={{height: ITEMS_INTERVAL_SPACE}} />
+          {line()}
+          <WechatItem value={emoji} onPress={setEmoji} />
+          {line()}
           <LocationItem />
-          <View style={{height: ITEMS_INTERVAL_SPACE}} />
+          {line()}
           <CalendarItem />
-          <View style={{height: ITEMS_INTERVAL_SPACE}} />
+          {line()}
           <VoiceItem />
-          <View style={{height: ITEMS_INTERVAL_SPACE}} />
+          {line()}
           <PhotoItem onPhotosSelected={urls => {}} />
           <View style={{height: 24}} />
+          <View style={{padding: 12, backgroundColor: 'white'}}>
+            <Button
+              title={'确认发布'}
+              // style={{marginHorizontal: 12}}
+              onPress={() => {}}
+              disable={true}
+            />
+          </View>
+          <View
+            style={{
+              height: useSafeAreaInsets().bottom,
+              backgroundColor: 'white',
+            }}
+          />
         </ScrollView>
       </View>
-      <View style={{padding: 12, backgroundColor: 'white'}}>
-        <Button
-          title={'确认发布'}
-          // style={{marginHorizontal: 12}}
-          onPress={() => {}}
-          disable={true}
-        />
-      </View>
-      <View
-        style={{height: useSafeAreaInsets().bottom, backgroundColor: 'white'}}
-      />
     </View>
   );
 };
