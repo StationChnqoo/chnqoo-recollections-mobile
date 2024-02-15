@@ -106,8 +106,8 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
       <Button
         title="开始记录"
         onPress={async () => {
-          let result = await new Services().selectLogin();
-          console.log('selectLogin: ', result);
+          // let result = await new Services().selectLogin();
+          // console.log('selectLogin: ', result);
           onSubmit(items.find(it => it.checked));
         }}
       />

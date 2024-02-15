@@ -18,6 +18,7 @@ import {
   VoiceItem,
   WechatItem,
 } from './components';
+var CryptoJS = require('crypto-js');
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -76,8 +77,10 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
             <Button
               title={'确认发布'}
               // style={{marginHorizontal: 12}}
-              onPress={() => {}}
-              disable={true}
+              onPress={() => {
+                console.log('onButtonPress')
+                navigation.navigate('LoginScreen');
+              }}
             />
           </View>
           <View
