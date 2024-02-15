@@ -6,6 +6,7 @@ import {useStore} from '@root/useStore';
 import React, {useEffect, useState} from 'react';
 import {
   Dimensions,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -14,6 +15,7 @@ import {
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {} from './components';
+import {rpx} from '@src/constants/x';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -43,12 +45,30 @@ const LoginScreen: React.FC<MyProps> = props => {
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            paddingHorizontal: 12,
+          }}>
+          <Image
+            source={require('@src/assets/common/logo_login.jpg')}
+            style={{height: rpx(64), width: rpx(64)}}
+          />
+          <View style={{width: 12}} />
+          <View style={{}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#333'}}>
+              陈桥笔记
+            </Text>
+            <Text style={{fontSize: 14, color: '#666'}}>Chnqoo Notebook</Text>
+          </View>
+        </View>
+        <View style={{height: 12}} />
         <View style={{padding: 12, backgroundColor: 'white'}}>
           <Text style={{fontSize: 20, fontWeight: '500'}}>
             Hi~ 欢迎使用Chnqoo Notes
           </Text>
-
-          <View style={{height: 32}} />
+          <View style={{height: 12}} />
           <View style={{}}>
             <TextInput
               value={mobile}

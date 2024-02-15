@@ -16,7 +16,7 @@ const useStore = create<States>()(
       set => ({
         bears: 0,
         increase: by => set(state => ({bears: state.bears + by})),
-        theme: '#987123',
+        theme: '#a86640',
         setTheme: theme => set({theme}),
       }),
       {

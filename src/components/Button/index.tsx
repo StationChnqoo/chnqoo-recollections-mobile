@@ -24,7 +24,7 @@ const Button: React.FC<MyProps> = props => {
       onPress={onPress}
       disabled={disable}
       activeOpacity={0.88}
-      style={[styles.view, style, {backgroundColor: theme}]}>
+      style={[styles.view, {backgroundColor: theme}, style]}>
       <Text style={{fontSize: 16, color: 'white'}}>{title}</Text>
     </TouchableOpacity>
   );
