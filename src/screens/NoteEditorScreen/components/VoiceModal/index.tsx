@@ -1,6 +1,5 @@
 import {useStore} from '@root/useStore';
 import {BottomSheet} from '@src/components';
-import {AppBottomBarModalItem} from '@src/constants/MyTypes';
 import {rpx} from '@src/constants/x';
 import LottieView from 'lottie-react-native';
 import React, {useState} from 'react';

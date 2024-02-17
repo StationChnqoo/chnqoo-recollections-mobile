@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RootStacksProp} from './ScreenStacks';
 import {useStore} from './useStore';
+import Services from '@src/constants/Services';
 
 const Tab = createBottomTabNavigator();
 interface AppProps {
@@ -108,7 +109,7 @@ const App: React.FC<AppProps> = props => {
         onSubmit={item => {
           console.log(item.id);
           setModalButtonStatus(0);
-          
+          new Services().selectLogin();
           navigation.navigate('NoteEditorScreen');
         }}
       />

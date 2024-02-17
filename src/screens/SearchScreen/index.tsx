@@ -1,15 +1,12 @@
-import { RouteProp } from '@react-navigation/native';
-import { RootStacksParams, RootStacksProp } from '@root/ScreenStacks';
+import {RouteProp} from '@react-navigation/native';
+import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
-import React, { useEffect, useState } from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  View
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { DailyPanel, LearnPanel, MotionPanel, TimerPanel } from './components';
+import React, {useEffect, useState} from 'react';
+import {StatusBar, StyleSheet, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {DailyPanel, LearnPanel, MotionPanel, TimerPanel} from './components';
+import {Styles} from '@src/constants/x';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -30,11 +27,14 @@ const SearchScreen: React.FC<MyProps> = props => {
       />
       <View style={{flex: 1}}>
         <View
-          style={{
-            paddingHorizontal: 32,
-            paddingVertical: 8,
-            backgroundColor: 'white',
-          }}>
+          style={[
+            {
+              paddingHorizontal: 32,
+              paddingVertical: 8,
+              backgroundColor: 'white',
+            },
+            Styles.card({}),
+          ]}>
           <SegmentedControl
             values={['全部', '日记', '纪念日', '心情', '笔记']}
             selectedIndex={index}

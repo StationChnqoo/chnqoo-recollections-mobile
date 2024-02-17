@@ -1,6 +1,6 @@
 import {RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
-import {rpx} from '@src/constants/x';
+import {Styles, rpx} from '@src/constants/x';
 
 import React, {useEffect, useState} from 'react';
 import {
@@ -28,7 +28,7 @@ const MyScreen: React.FC<MyProps> = props => {
   }, []);
   return (
     <View style={{flex: 1}}>
-      <View style={styles.viewToobar}>
+      <View style={[styles.viewToobar, Styles.card({borderRadius: 0})]}>
         <View
           style={{
             alignItems: 'center',

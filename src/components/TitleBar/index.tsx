@@ -1,4 +1,4 @@
-import {rpx} from '@src/constants/x';
+import {Styles, rpx} from '@src/constants/x';
 import React, {ReactNode, useEffect} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -16,7 +16,7 @@ const TitleBar: React.FC<MyProps> = props => {
 
   const {title, onBackPress, moreView} = props;
   return (
-    <View style={{backgroundColor: 'white'}}>
+    <View style={[{backgroundColor: 'white'}, Styles.card({})]}>
       <View style={{height: useSafeAreaInsets().top}} />
       <View style={styles.view}>
         <TouchableOpacity

@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 /**
  * 微信屏幕适配
@@ -68,6 +68,26 @@ const Colors = {
   ],
 };
 
+const Styles = {
+  row: function (params: {
+    justifyContent:
+      | 'center'
+      | 'flex-end'
+      | 'flex-start'
+      | 'space-around'
+      | 'space-between';
+  }) {
+    return {...styles.row, justifyContent: params.justifyContent};
+  },
+  card: function (params: {borderRadius?: number}) {
+    return {
+      ...styles.card,
+      shadowRadius: params.borderRadius,
+      borderRadius: params.borderRadius,
+    };
+  },
+};
+
 /**
  * 手机验证正则表达式
  * @param mobile
@@ -77,4 +97,17 @@ const isMobile = (mobile: string) => {
   return /^1[3-9]\d{9}$/.test(mobile);
 };
 
-export {rpx, useWechatEmoji, Colors, isMobile};
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  card: {
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.88,
+    elevation: 2, // 适用于 Android
+  },
+});
+
+export {rpx, useWechatEmoji, Colors, isMobile, Styles};

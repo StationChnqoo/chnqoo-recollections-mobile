@@ -1,5 +1,5 @@
 import {useStore} from '@root/useStore';
-import {rpx} from '@src/constants/x';
+import {Styles, rpx} from '@src/constants/x';
 import React, {ReactNode, useEffect} from 'react';
 import {Platform, StatusBar, StyleSheet, Switch, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,7 +19,6 @@ const BeautyTitleBar: React.FC<MyProps> = props => {
   const {theme} = useStore();
   return (
     <LinearGradient
-      style={{}}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}
       colors={[

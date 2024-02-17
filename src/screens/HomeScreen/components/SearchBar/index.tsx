@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 12,
+    height: rpx(44),
+    paddingHorizontal: 12
   },
   viewInputer: {
     height: rpx(32),

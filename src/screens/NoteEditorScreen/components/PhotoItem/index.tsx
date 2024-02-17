@@ -1,4 +1,5 @@
 import {useStore} from '@root/useStore';
+import Services from '@src/constants/Services';
 import {rpx} from '@src/constants/x';
 
 import React, {useEffect, useState} from 'react';
@@ -35,10 +36,19 @@ const PhotoItem: React.FC<MyProps> = props => {
         quality: 0.8,
         selectionLimit: 1,
       });
-      let assets = [...(result.assets || [])];
-      if (assets.length == 1) {
+      let uri = result.assets[0].uri;
+      let upload = await new Services().upload({
+        id: 'XqC8_HgFq8JTuUAtImPBi',
+        idQoo: 7777777,
+        file: {
+          uri,
+          type: 'image/jpg',
+          name: `${Date.now()}.${uri.split('.').pop()}`,
+        },
+      });
+      if (upload.success) {
         let _images = [...images];
-        _images.push(assets[0].uri);
+        _images.push(upload.data);
         setImages(_images);
       }
     }

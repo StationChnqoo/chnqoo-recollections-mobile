@@ -1,4 +1,4 @@
-import {rpx} from '@src/constants/x';
+import {Styles, rpx} from '@src/constants/x';
 
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
