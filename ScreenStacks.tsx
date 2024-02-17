@@ -13,6 +13,7 @@ import DemoScreen from '@src/screens/DemoScreen';
 import NoteEditorScreen from '@src/screens/NoteEditorScreen';
 import LoginScreen from '@src/screens/LoginScreen';
 import SmsScreen from '@src/screens/SmsScreen';
+import PermissionsScreen from '@src/screens/PermissionsScreen';
 
 export type RootStacksParams = {
   App: undefined;
@@ -20,6 +21,7 @@ export type RootStacksParams = {
   NoteEditorScreen: {id?: string; type?: string};
   LoginScreen: undefined;
   SmsScreen: {mobile: string};
+  PermissionsScreen: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStacksParams>();
@@ -41,6 +43,10 @@ export default function Stacks() {
         />
         <RootStack.Screen name="LoginScreen" component={LoginScreen} />
         <RootStack.Screen name="SmsScreen" component={SmsScreen} />
+        <RootStack.Screen
+          name="PermissionsScreen"
+          component={PermissionsScreen}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );

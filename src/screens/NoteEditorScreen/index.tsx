@@ -62,7 +62,11 @@ const NoteEditorScreen: React.FC<MyProps> = props => {
           />
         </View>
         <WechatItem value={emoji} onPress={setEmoji} />
-        <LocationItem />
+        <LocationItem
+          onPress={() => {
+            navigation.navigate('PermissionsScreen');
+          }}
+        />
         <CalendarItem />
         <VoiceItem />
         <PhotoItem onPhotosSelected={urls => {}} />

@@ -5,15 +5,17 @@ import moment from 'moment';
 import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-interface MyProps {}
+interface MyProps {
+  onPress: () => void;
+}
 
 const LocationItem: React.FC<MyProps> = props => {
+  const {onPress} = props;
+  const {theme} = useStore();
+
   useEffect(() => {
     return function () {};
   }, []);
-
-  const {} = props;
-  const {theme} = useStore();
 
   return (
     <View style={styles.views}>
@@ -28,7 +30,8 @@ const LocationItem: React.FC<MyProps> = props => {
       <TouchableOpacity
         style={{flexDirection: 'row', alignItems: 'center'}}
         activeOpacity={0.88}
-        hitSlop={{top: 12, bottom: 12}}>
+        hitSlop={{top: 12, bottom: 12}}
+        onPress={onPress}>
         <Text style={{color: '#666', fontSize: 14}}>广东省深圳市</Text>
         <Image
           source={require('@src/assets/common/row_more_horizontal.png')}
