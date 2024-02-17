@@ -1,14 +1,13 @@
 import {
-  CommonActions,
-  RouteProp,
-  useFocusEffect,
+  RouteProp
 } from '@react-navigation/native';
-import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
-import {TitleBar} from '@src/components';
+import { RootStacksParams, RootStacksProp } from '@root/ScreenStacks';
+import { TitleBar } from '@src/components';
 
-import {useStore} from '@root/useStore';
-import {useInterval} from 'ahooks';
-import React, {useCallback, useEffect, useState} from 'react';
+import { useStore } from '@root/useStore';
+import Permissioner from '@src/constants/Permissioner';
+import { Colors, Styles } from '@src/constants/x';
+import React, { useEffect, useState } from 'react';
 import {
   AppState,
   Linking,
@@ -16,12 +15,9 @@ import {
   StyleSheet,
   Switch,
   Text,
-  TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import Permissioner from '@src/constants/Permissioner';
-import {Styles} from '@src/constants/x';
 
 interface MyProps {
   navigation?: RootStacksProp;
@@ -60,7 +56,7 @@ const PermissionsScreen: React.FC<MyProps> = props => {
     checkPermissions();
     return function () {};
   }, []);
-  
+
   useEffect(() => {
     let appState = AppState.addEventListener('focus', () => {
       checkPermissions();
@@ -71,7 +67,7 @@ const PermissionsScreen: React.FC<MyProps> = props => {
   }, []);
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1, backgroundColor: Colors.page}}>
       <TitleBar
         onBackPress={() => {
           navigation.goBack();
@@ -82,7 +78,7 @@ const PermissionsScreen: React.FC<MyProps> = props => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {datas.map((it, i) => (
           <TouchableOpacity
-            style={[styles.viewItem, Styles.card({borderRadius: 12})]}
+            style={[styles.viewItem]}
             key={i}
             activeOpacity={0.88}
             onPress={() => {
