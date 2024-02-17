@@ -43,13 +43,14 @@ const LoginScreen: React.FC<MyProps> = props => {
         }}
         title={'登录'}
       />
-
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={{height: 2}} />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{paddingHorizontal: 12}}>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'flex-end',
-            paddingHorizontal: 12,
           }}>
           <Image
             source={require('@src/assets/common/logo_login.jpg')}
@@ -57,15 +58,15 @@ const LoginScreen: React.FC<MyProps> = props => {
           />
           <View style={{width: 12}} />
           <View style={{}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#333'}}>
+            <Text style={{fontSize: 20, color: '#333', fontWeight: '500'}}>
               陈桥笔记
             </Text>
             <Text style={{fontSize: 14, color: '#666'}}>Chnqoo Notebook</Text>
           </View>
         </View>
         <View style={{height: 12}} />
-        <View style={{padding: 12, backgroundColor: 'white'}}>
-          <Text style={{fontSize: 20, fontWeight: '500'}}>
+        <View style={{}}>
+          <Text style={{fontSize: 20, fontWeight: '500', padding: 4}}>
             Hi~ 欢迎使用Chnqoo Notes
           </Text>
           <View style={{height: 12}} />

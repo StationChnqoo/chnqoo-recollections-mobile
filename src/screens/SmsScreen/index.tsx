@@ -1,4 +1,4 @@
-import {CommonActions, RouteProp, StackActions} from '@react-navigation/native';
+import {CommonActions, RouteProp} from '@react-navigation/native';
 import {RootStacksParams, RootStacksProp} from '@root/ScreenStacks';
 import {TitleBar} from '@src/components';
 
@@ -6,7 +6,6 @@ import {useStore} from '@root/useStore';
 import {useInterval} from 'ahooks';
 import React, {useEffect, useState} from 'react';
 import {
-  Dimensions,
   ScrollView,
   StyleSheet,
   Text,
@@ -78,8 +77,9 @@ const SmsScreen: React.FC<MyProps> = props => {
         }}
         title={''}
       />
+      <View style={{height: 12}} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{padding: 12, backgroundColor: 'white'}}>
+        <View style={{padding: 16, backgroundColor: 'white'}}>
           <Text style={{fontSize: 20, fontWeight: '500', color: '#333'}}>
             输入验证码
           </Text>
@@ -99,7 +99,7 @@ const SmsScreen: React.FC<MyProps> = props => {
           </View>
           <TouchableOpacity
             activeOpacity={0.88}
-            style={{margin: 8}}
+            style={{marginVertical: 8, marginHorizontal: 4}}
             hitSlop={{top: 12, right: 12, bottom: 12, left: 12}}
             onPress={onButtonPress}>
             <Text style={{color: theme, fontSize: 14}}>
