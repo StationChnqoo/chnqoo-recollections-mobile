@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {AppBottomBarModal} from '@src/components';
+import {AppBottomBarModal, TodoEditorModal} from '@src/components';
+import {NotesType} from '@src/constants/MyTypes';
 import {rpx} from '@src/constants/x';
 import CommunityScreen from '@src/screens/CommunityScreen';
 import DemoScreen from '@src/screens/DemoScreen';
@@ -11,7 +12,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RootStacksProp} from './ScreenStacks';
 import {useStore} from './useStore';
-import Services from '@src/constants/Services';
+import moment from 'moment';
 
 const Tab = createBottomTabNavigator();
 interface AppProps {
@@ -20,10 +21,11 @@ interface AppProps {
 
 const App: React.FC<AppProps> = props => {
   const {navigation} = props;
-  const {theme} = useStore();
-  const [modalButtonStatus, setModalButtonStatus] = useState(0);
+  const {theme, todos, setTodos, mergeTodos} = useStore();
+  const [modal, setModal] = useState({index: 0, ready: false});
 
   useEffect(() => {
+    moment.locale();
     return function () {};
   }, []);
 
@@ -72,16 +74,11 @@ const App: React.FC<AppProps> = props => {
               <TouchableOpacity
                 activeOpacity={0.88}
                 onPress={() => {
-                  setModalButtonStatus(t => -t + 1);
+                  setModal({index: 0, ready: true});
                 }}
                 style={[styles.viewModalButton, {backgroundColor: theme}]}>
                 <Image
-                  source={
-                    [
-                      require('@src/assets/menu/modal_open.png'),
-                      require('@src/assets/menu/modal_close.png'),
-                    ][modalButtonStatus]
-                  }
+                  source={require('@src/assets/menu/modal_open.png')}
                   style={{tintColor: 'white', height: rpx(24), width: rpx(24)}}
                 />
               </TouchableOpacity>
@@ -100,18 +97,41 @@ const App: React.FC<AppProps> = props => {
         />
       </Tab.Navigator>
       <AppBottomBarModal
-        isVisible={modalButtonStatus == 1}
+        isVisible={modal.index == 0 && modal.ready}
         onClose={() => {
-          setModalButtonStatus(0);
+          setModal({index: 0, ready: false});
         }}
-        onHide={() => {}}
+        onHide={() => {
+          if (modal.index != 0) {
+            setModal({index: modal.index, ready: true});
+          }
+        }}
         onShow={() => {}}
         onSubmit={item => {
           console.log(item.id);
-          setModalButtonStatus(0);
-          new Services().selectLogin();
-          navigation.navigate('NoteEditorScreen');
+          // new Services().selectLogin();
+          if (item.id == NotesType.TODO) {
+            setModal({index: 1, ready: false});
+            // navigation.navigate('TodoEditorScreen');
+          } else {
+            navigation.navigate('NoteEditorScreen');
+          }
         }}
+      />
+      <TodoEditorModal
+        isVisible={modal.index == 1 && modal.ready}
+        onClose={() => {
+          setModal({index: 0, ready: false});
+        }}
+        onHide={() => {
+          setModal({index: 0, ready: false});
+        }}
+        onShow={() => {}}
+        onSubmit={item => {
+          mergeTodos(item);
+          setModal({index: 0, ready: false});
+        }}
+        onDeletePress={todo => {}}
       />
     </View>
   );

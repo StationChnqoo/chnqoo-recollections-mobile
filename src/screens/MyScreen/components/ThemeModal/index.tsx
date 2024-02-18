@@ -45,6 +45,7 @@ const ThemeModal: React.FC<MyProps> = props => {
             <TouchableOpacity
               activeOpacity={0.88}
               key={i}
+              hitSlop={{top: 4, right: 4, bottom: 4, left: 4}}
               style={[
                 styles.viewItem,
                 {

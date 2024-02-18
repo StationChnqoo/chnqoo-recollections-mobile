@@ -8,6 +8,7 @@ const StoreContext = createContext();
 
 const Application = () => {
   Appearance.setColorScheme('light');
+
   useEffect(() => {
     return function () {};
   }, []);

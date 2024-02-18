@@ -1,4 +1,7 @@
-import React, {ReactNode, useState} from 'react';
+import {useStore} from '@root/useStore';
+import {AppBottomBarModalItem, NotesType} from '@src/constants/MyTypes';
+import {rpx} from '@src/constants/x';
+import React, {useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -10,11 +13,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import BottomSheet from '../BottomSheet';
-import {rpx} from '@src/constants/x';
 import Button from '../Button';
-import {useStore} from '@root/useStore';
-import {AppBottomBarModalItem, NotesType} from '@src/constants/MyTypes';
-import Services from '@src/constants/Services';
+import TodoEditorModal from '../TodoEditorModal';
 
 interface MyProps {
   isVisible: boolean;
@@ -37,6 +37,12 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
       id: NotesType.MOTION,
       title: '碎碎念',
       src: require('@src/assets/main/module_motion.png'),
+      checked: false,
+    },
+    {
+      id: NotesType.TODO,
+      title: '待办事项',
+      src: require('@src/assets/main/module_todo.png'),
       checked: false,
     },
     {
@@ -79,7 +85,7 @@ const AppBottomBarModal: React.FC<MyProps> = props => {
               }}
             />
             <View style={{height: 6}} />
-            <Text style={{fontSize: 16, color: item.checked ? theme : '#666'}}>
+            <Text style={{fontSize: 12, color: item.checked ? theme : '#666'}}>
               {item.title}
             </Text>
           </View>
@@ -128,7 +134,7 @@ const styles = StyleSheet.create({
   viewItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: (Dimensions.get('screen').width - 64) / 4,
+    width: (Dimensions.get('screen').width - 64) / 5,
     borderWidth: 1,
     borderRadius: 16,
     paddingVertical: 12,

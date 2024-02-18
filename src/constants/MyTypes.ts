@@ -21,11 +21,23 @@ export const CardInputerKeyevent = {
   POP: 'POP',
 };
 
+export interface Todo {
+  id: string;
+  content: string;
+  updateTime: string;
+  createTime: string;
+  notifyTime: string;
+  isDaily: boolean;
+  success: boolean;
+  updateQuantity:  number;
+}
+
 export const NotesType = {
   TIMER: 'TIMER',
   DAILY: 'DAILY',
   MOTION: 'MOTION',
   LEARN: 'COLLECT',
+  TODO: 'TODO',
 };
 
 export interface AppBottomBarModalItem {
