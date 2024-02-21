@@ -9,6 +9,8 @@ import {
 import Stacks from './ScreenStacks';
 import {name as appName} from './app.json';
 import {useStore} from './useStore';
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
 
 const StoreContext = createContext();
 
