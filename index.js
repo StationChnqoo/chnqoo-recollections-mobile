@@ -10,9 +10,14 @@ const Application = () => {
   Appearance.setColorScheme('light');
 
   useEffect(() => {
+    if (__DEV__) {
+      DevSettings.addMenuItem('Debugging with Chrome', () => {
+        NativeModules.DevSettings.setIsDebuggingRemotely(true);
+      });
+    }
     return function () {};
   }, []);
-
+  
   return (
     <StoreContext.Provider value={useStore}>
       <View style={{flex: 1}}>
