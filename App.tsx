@@ -66,7 +66,7 @@ const App: React.FC<AppProps> = props => {
           component={SearchScreen}
           options={{tabBarLabel: '归档'}}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name={'Modal'}
           component={DemoScreen}
           options={{
@@ -84,7 +84,7 @@ const App: React.FC<AppProps> = props => {
               </TouchableOpacity>
             ),
           }}
-        />
+        /> */}
         <Tab.Screen
           name={'Community'}
           component={CommunityScreen}

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useReduxDevToolsExtension } from '@react-navigation/devtools';
 import {Todo} from '@src/constants/MyTypes';
 import {create} from 'zustand';
 import {createJSONStorage, devtools, persist} from 'zustand/middleware';
@@ -56,6 +57,7 @@ const useStore = create<States>()(
         }),
       },
     ),
+    {anonymousActionType: 'react-native-redux'},
   ),
 );
 
